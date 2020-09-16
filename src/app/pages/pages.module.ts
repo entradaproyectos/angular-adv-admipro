@@ -13,6 +13,8 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { ProgressComponent } from './progress/progress.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountSttingsComponent } from './account-sttings/account-sttings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxJsComponent } from './rx-js/rx-js.component';
 
 
 
@@ -24,7 +26,9 @@ import { AccountSttingsComponent } from './account-sttings/account-sttings.compo
     ProgressComponent,
     Grafica1Component,
     PagesComponent,
-    AccountSttingsComponent
+    AccountSttingsComponent,
+    PromesasComponent,
+    RxJsComponent
   ],
   exports: [
     DashboardComponent,
