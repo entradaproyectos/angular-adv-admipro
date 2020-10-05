@@ -25,8 +25,6 @@ export class BreadcrumbsComponent implements OnDestroy{
     this.tituloSubs$.unsubscribe();
   }
 
-  
-
   argumentosRuta(){
     return this.router.events
     .pipe(
