@@ -8,11 +8,9 @@ const baseUrl = environment.baseUrl;
 })
 export class FileUploadService {
 
-  
-
   constructor() { }
 
-  async actualizarFoto(archivo:File,tipo:'usuarios'|'medicos'|'haospitales', id:string){
+  async actualizarFoto(archivo:File,tipo:'usuarios'|'medicos'|'hospitales', id:string){
 
     try {
 
@@ -37,9 +35,6 @@ export class FileUploadService {
         console.log(data.msg);
         return false;
       }
-
-      return 'nombre de la imagen';
-
 
     } catch (error) {
       console.log(error);

@@ -16,6 +16,7 @@ import { AccountSttingsComponent } from './account-sttings/account-sttings.compo
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxJsComponent } from './rx-js/rx-js.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 
 
 
@@ -30,7 +31,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     AccountSttingsComponent,
     PromesasComponent,
     RxJsComponent,
-    PerfilComponent
+    PerfilComponent,
+    UsuariosComponent
   ],
   exports: [
     DashboardComponent,
