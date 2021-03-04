@@ -1,0 +1,81 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #txtTermino type="text" class="form-control" placeholder="Buscar acto ...">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <p><i class="fa fa-spin fa-refresh fa-2x"></i></p>
+            <p class="mb-0">Por favor, espere ...</p>
+        </div>
+    </div>
+</div> -->
+
+<div class="row " *ngIf="actos.length > 0">
+    <div class="col-12 ">
+        <div class="card ">
+            <div class="card-body ">
+                <h4 class="card-title ">Actos</h4>
+                <h6 class="card-subtitle ">Actos registrados en la Agenda {{totalActos}}</h6>
+                <div class="table-responsive ">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr>
+                                <th style="width: 106px;">Fecha</th>
+                                <th>Enlace</th>
+                                <th style="width: 86px;">Acción</th>
+                                <th>Título</th>
+                                <th>Varias Fechas</th>
+                                <th class="text-nowrap ">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of actos">
+                                <td>{{item.url_fecha | date:'dd / MM / yy'}}</td>
+                                <td>
+                                    <a [href]="item.enlace" target="_blank">
+                                        <button type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-secondary">enlace</button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <button (click)="borrar(item._id)" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-outline-danger mr-1"><i class="fa fa-trash"></i></button>
+                                    <button (click)="editar(item._id)" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-outline-primary"><i class="fa fa-pencil"></i></button>
+                                </td>
+
+                                <td>{{item.titulo}}</td>
+                                <td>
+                                    <button *ngIf="item.varies_dates === false" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-info">Un dia</button>
+                                    <button *ngIf="item.varies_dates === true" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-secondary">Varies dates</button>
+                                </td>
+                                <td class="text-nowrap text-center ">
+
+                                    <button *ngIf="item.id_cv === 'oooo'" (click)="crearCV(item._id)" routerLinkActive="router-link-active" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-secondary" style="margin-right: 5px;">CV</button>
+                                    <button *ngIf="item.id_cv !== 'oooo'" (click)="crearCV(item._id)" routerLinkActive="router-link-active" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-success" style="margin-right: 5px;">CV</button>
+
+                                    <button *ngIf="item.id_rec === 'oooo'" (click)="crearRec(item._id)" routerLinkActive="router-link-active" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-secondary" style="margin-right: 5px;">REC</button>
+                                    <button *ngIf="item.id_rec !== 'oooo'" (click)="crearRec(item._id)" routerLinkActive="router-link-active" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-success" style="margin-right: 5px;">REC</button>
+
+                                    <button *ngIf="item.id_post === 'oooo'" (click)="crearPost(item._id)" routerLinkActive="router-link-active" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-secondary" style="margin-right: 5px;">POST</button>
+                                    <button *ngIf="item.id_post !== 'oooo'" (click)="crearPost(item._id)" routerLinkActive="router-link-active" type="button" class="btn waves-effect waves-light btn-rounded btn-xs btn-success" style="margin-right: 5px;">POST</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="txtTermino.value.length === 0">
+                    <button (click)="cambiarPagina(-30)" class="btn btn-secondary">Anteriores</button> &nbsp;
+                    <button (click)="cambiarPagina(30)" class="btn btn-secondary">Siguientes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

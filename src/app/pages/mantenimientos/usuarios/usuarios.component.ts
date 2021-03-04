@@ -49,13 +49,12 @@ export class UsuariosComponent implements OnInit, OnDestroy {
 
 
   CargarUsuarios(){
-    this.cargando = true;
-    this.usuarioService.cargarUsuarios(this.desde).subscribe( ({total,usuarios}) => {
+      this.cargando = true;
+      this.usuarioService.cargarUsuarios(this.desde).subscribe( ({total,usuarios}) => {
       this.totalUsuarios = total;
       this.usuarios = usuarios;
       this.usuariosTemp = usuarios;
       this.cargando = false;
-
     })
   }
 
@@ -64,7 +63,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     if (this.desde < 0) {
       this.desde = 0;
     }else if(this.desde >= this.totalUsuarios){
-      this.desde -= valor;  
+      this.desde -= valor;
     }
     this.CargarUsuarios();
   }

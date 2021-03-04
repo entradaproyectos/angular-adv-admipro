@@ -50,8 +50,7 @@ export class PerfilComponent implements OnInit {
 
       })
   }
-
-
+  
   cambiarImagen(file:File){
     // console.log(file);
     this.imagenSubir = file;

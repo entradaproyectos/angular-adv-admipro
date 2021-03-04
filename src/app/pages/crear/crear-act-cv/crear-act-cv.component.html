@@ -1,0 +1,338 @@
+<!-- <div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <p><i class="fa fa-spin fa-refresh fa-2x"></i></p>
+            <p class="mb-0">Por favor, espere ...</p>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Crear Newsletter</h4>
+        <div class="row">
+            <!-- <h6 class="card-subtitle">Título</h6> -->
+            <div class="linea-ext" style="padding-bottom: 0px;" *ngIf="acto">
+                <div class="form-group" style="margin-bottom: 5px;">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- <label for="exampleInputuname">Enlace</label> -->
+                            <div class="input-group mb-2" style="width: 100%;" *ngIf="acto">
+                                <textarea aria-label="With textarea" placeholder="Enlace de la News" rows="2" style="width: 100%;" [value]="acto.enlace"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Responder Nombre</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Nombre" style="width: 100%;" [(ngModel)]="responder_nombre">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Responder Mail</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Mail" style="width: 100%;" [(ngModel)]="responder_mail">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Número</label>
+                                <input type="number" placeholder="Número" style="width: 100%;" [(ngModel)]="numero">
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Utm Campaing</label>
+                                <select class="custom-select" id="inputGroupSelect02" style="width: 100%;" [(ngModel)]="utmCampaing">
+                                    <option value="ES-FIN">ES-FIN</option>
+                                    <option value="FIN">FIN</option>
+                                    <option value="ES-INN">ES-INN</option>
+                                    <option value="INN">INN</option>
+                                    <option value="INT">INT</option>
+                                    <option value="cluster">cluster</option>
+                                    <option value="startup">startup</option>
+                                    <option value="STUP">STUP</option>
+                                    <option value="missio">missio</option>
+                                    <option value="invest">invest</option>
+                                    <option value="dgi">dgi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Asunto</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Asunto" style="width: 100%;" [(ngModel)]="asunto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Preheader</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Preheader" style="width: 100%;" [(ngModel)]="preheader">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-7">
+                            <app-texteditor [acto]="acto" [utmCampaing]="utmCampaing" [numero]="numero" [tipo]="tipo" (emitHtml)="recibirTexto($event)"></app-texteditor>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="exampleInputuname">Inscriu</label>
+                                    <select class="custom-select" id="inputGroupSelect02" style="width: 100%;" [(ngModel)]="inscriu">
+                                    <option value="Inscriu-t'hi ara">Inscriu-t'hi ara</option>
+                                    <option value="No t'ho perdis">No t'ho perdis</option>
+                                </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Imagenes de CV</h4>
+                                    <h6 class="card-subtitle">Imagen 180x180</h6>
+
+                                    <app-cropimage [resizeToWidth]="resizeToWidth" (imagenCortada)="recibirImagen($event) " (imagenOriginal)="recibirImagenOriginal($event)" [resizeToHeight]=" resizeToHeight "></app-cropimage>
+                                </div>
+                            </div>
+                            <div class="card ">
+                                <div class="card-body ">
+                                    <h4 class="card-title ">Més Info</h4>
+                                    <h6 class="card-subtitle ">Mail</h6>
+                                    <p>
+                                        <img data-cke-saved-src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/img/arrow-vermell.png " src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/img/arrow-vermell.png " alt="icona
+                                        fletxa " style="border-width:0 ">
+                                        <span class="x13 " style="line-height:19px !important;font-size:13px; ">
+                                            <a data-linkname="RightColum : contacte " class="notranslate " href="mailto:{{responder_mail}} " style="text-decoration:none;font-size:13px;color:#c00000; " target="_blank " translate="no ">
+                                                <strong>&nbsp;{{responder_nombre}}</strong>
+                                            </a>
+                                        </span>
+                                        <br>
+                                        <span *ngIf="tel1 ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tel: {{tel1}}</span>
+                                    </p>
+                                    <p *ngIf="responder_nombre2 && responder_mail2 ">
+                                        <img data-cke-saved-src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/img/arrow-vermell.png " src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/img/arrow-vermell.png " alt="icona
+                                        fletxa " style="border-width:0 ">
+                                        <span class="x13 " style="line-height:19px !important;font-size:13px; ">
+                                            <a data-linkname="RightColum : contacte " class="notranslate " href="mailto:{{responder_mail2}} " style="text-decoration:none;font-size:13px;color:#c00000; " target="_blank " translate="no ">
+                                                <strong>&nbsp;{{responder_nombre2}}</strong>
+                                            </a>
+                                        </span>
+                                        <br>
+                                        <span *ngIf="tel2 ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tel: {{tel2}}</span>
+                                    </p>
+                                    <button type="button " class="btn btn-secondary btn-block waves-effect waves-light m-r-10 mt-3 mb-2 " (click)="show_tel=! show_tel ">
+                                        <div *ngIf="show_tel===false ">
+                                            <i class="fa fa-plus "></i>
+                                            &nbsp;Añadir Teléfono
+                                        </div>
+                                        <div *ngIf="show_tel===true ">
+                                            <i class="fa fa-minus "></i>
+                                            &nbsp;Ocultar Teléfono
+                                        </div>
+                                    </button>
+                                    <div class="linea-ext " *ngIf="show_tel===true ">
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Teléfono " style="width: 100%; " [(ngModel)]="tel1 ">
+                                        </div>
+                                    </div>
+                                    <button type="button " class="btn btn-secondary btn-block waves-effect waves-light m-r-10 mb-2 " (click)="show_2mail=! show_2mail ">
+                                        <div *ngIf="show_2mail===false ">
+                                            <i class="fa fa-plus "></i>
+                                            &nbsp;Añadir Mail
+                                        </div>
+                                        <div *ngIf="show_2mail===true ">
+                                            <i class="fa fa-minus "></i>
+                                            &nbsp;Ocultar Mail
+                                        </div>
+                                    </button>
+                                    <div class="linea-ext " *ngIf="show_2mail===true ">
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Responder Nombre 2 " style="width: 100%; " [(ngModel)]="responder_nombre2 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Responder Mail 2 " style="width: 100%; " [(ngModel)]="responder_mail2 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Teléfono 2 " style="width: 100%; " [(ngModel)]="tel2 ">
+                                        </div>
+                                    </div>
+                                    <button type="button " class="btn btn-secondary btn-block waves-effect waves-light m-r-10 mb-2 " (click)="show_colabora=! show_colabora ">
+                                        <div *ngIf="show_colabora===false ">
+                                            <i class="fa fa-plus "></i>
+                                            &nbsp;Añadir Colabora
+                                        </div>
+                                        <div *ngIf="show_colabora===true ">
+                                            <i class="fa fa-minus "></i>
+                                            &nbsp;Ocultar Colabora
+                                        </div>
+                                    </button>
+                                    <div class="linea-ext " *ngIf="show_colabora===true ">
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Colabora Nombre1 " style="width: 100%; " [(ngModel)]="colabora_nombre1 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Colabora enlace1 " style="width: 100%; " [(ngModel)]="colabora_enlace1 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Colabora Nombre2 " style="width: 100%; " [(ngModel)]="colabora_nombre2 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Colabora enlace2 " style="width: 100%; " [(ngModel)]="colabora_enlace2 ">
+                                        </div>
+                                    </div>
+                                    <button type="button " class="btn btn-secondary btn-block waves-effect waves-light m-r-10 mb-2 " (click)="show_coorganitzat=! show_coorganitzat ">
+                                        <div *ngIf="show_coorganitzat===false ">
+                                            <i class="fa fa-plus "></i>
+                                            &nbsp;Añadir Coorganitzat amb:
+                                        </div>
+                                        <div *ngIf="show_coorganitzat===true ">
+                                            <i class="fa fa-minus "></i>
+                                            &nbsp;Ocultar Coorganitzat amb:
+                                        </div>
+                                    </button>
+                                    <div class="linea-ext " *ngIf="show_coorganitzat===true ">
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Coorganitzat Nombre1 " style="width: 100%; " [(ngModel)]="coorganitzat_nombre1 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Coorganitzat enlace1 " style="width: 100%; " [(ngModel)]="coorganitzat_enlace1 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Coorganitzat Nombre2 " style="width: 100%; " [(ngModel)]="coorganitzat_nombre2 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Coorganitzat enlace2 " style="width: 100%; " [(ngModel)]="coorganitzat_enlace2 ">
+                                        </div>
+                                    </div>
+                                    <button type="button " class="btn btn-secondary btn-block waves-effect waves-light m-r-10 mb-2 " (click)="show_enlaces=! show_enlaces ">
+                                        <div *ngIf="show_enlaces===false ">
+                                            <i class="fa fa-plus "></i>
+                                            &nbsp;Añadir enlaces:
+                                        </div>
+                                        <div *ngIf="show_enlaces===true ">
+                                            <i class="fa fa-minus "></i>
+                                            &nbsp;Ocultar enlaces:
+                                        </div>
+                                    </button>
+                                    <div class="linea-ext " *ngIf="show_enlaces===true ">
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Enlaces Nombre1 " style="width: 100%; " [(ngModel)]="enlaces_nombre1 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Enlaces enlace1 " style="width: 100%; " [(ngModel)]="enlaces_enlace1 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Enlaces Nombre2 " style="width: 100%; " [(ngModel)]="enlaces_nombre2 ">
+                                        </div>
+                                        <div class="input-group mb-2 ">
+                                            <input type="text " placeholder="Enlaces enlace2 " style="width: 100%; " [(ngModel)]="enlaces_enlace2 ">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-12 ">
+                            <button type="button " class="btn btn-info btn-block waves-effect waves-light m-r-10 " (click)="generarNews() ">
+                                <div *ngIf="!cargando ">
+                                    <i class="fa fa-save " *ngIf="!cargando "></i>
+                                    <i class="fa fa-spin fa-refresh " *ngIf="cargando "></i>
+                                    &nbsp;Generar
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row " *ngIf="newsCV ">
+                        <div class="col-12 ">
+                            <div class="card ">
+                                <div class="card-body text-center ">
+                                    <h4 class="card-title ">Vista Previa</h4>
+                                    <app-actcv [newsletter]="newsCV " *ngIf="newsCV " (html)="recogerHtmlString($event) " [imagenCropped]="imagenCropped " [lista_preview]="lista_preview "></app-actcv>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Crear Newsletter</h4>
+        <div class="row">
+            <div class="col-3 ">
+                <a *ngIf="urlTxt " [href]="urlTxt " target="_blank " [download]="txtName " rel="noopener noreferrer ">
+                    <button type="button " class="btn btn-primary btn-block btn-rounded waves-effect waves-light ">
+                            <i class="fa fa-cloud-download "></i>
+                            Descargar TXT
+                        </button>
+                </a>
+            </div>
+            <div class="col-3 ">
+                <a *ngIf="urlHtml " [href]="urlHtml " target="_blank " [download]="htmlName " rel="noopener noreferrer ">
+                    <button type="button " class="btn btn-info btn-block btn-rounded waves-effect waves-light ">
+                            <i class="fa fa-cloud-download "></i> Descargar HTML
+                        </button>
+                </a>
+            </div>
+            <div class="col-3 ">
+                <a *ngIf="urlHtmlText " [href]="urlHtmlText " target="_blank " [download]="htmlTextName " rel="noopener noreferrer ">
+                    <button type="button " class="btn btn-secondary btn-block btn-rounded waves-effect waves-light ">
+                            <i class="fa fa-cloud-download "></i> Descargar HTML-TEXT
+                        </button>
+                </a>
+            </div>
+            <div class="col-3 ">
+                <a *ngIf="urlImage " [href]="urlImage " target="_blank " [download]="htmlName " rel="noopener noreferrer ">
+                    <button type="button " class="btn btn-warning btn-block btn-rounded waves-effect waves-light ">
+                            <i class="fa fa-cloud-download "></i> Descargar Imagen
+                        </button>
+                </a>
+            </div>
+        </div>
+        <div class="row mt-4 ">
+            <div class="col-12 ">
+                <a *ngIf="urlZip" [href]="urlImage " target="_blank " [download]="htmlName " rel="noopener noreferrer ">
+                    <button type="button " class="btn btn-danger btn-block btn-rounded waves-effect waves-light ">
+                            <i class="fa fa-cloud-download "></i> Descargar ZIP
+                        </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row " *ngIf="newsCV ">
+    <div class="col-12">
+        <button (click)="guardarActCv() " type="submit " class="btn btn-success btn-block waves-effect waves-light ">
+            <i class="fa fa-save "></i>
+            Guardar cambios
+        </button>
+    </div>
+</div>

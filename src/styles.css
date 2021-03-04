@@ -52,3 +52,35 @@
 .oculto {
     display: none;
 }
+
+.linea-ext {
+    border: 1px solid rgba(0, 0, 0, .125);
+    padding: 15px;
+}
+
+.linea-ext-xs {
+    border: 1px solid rgba(0, 0, 0, .125);
+    padding: 5px;
+}
+
+.si-no {
+    height: 30px;
+    border-radius: 15px;
+    border: 1px solid rgb(59, 59, 59);
+    min-width: 50px;
+    text-align: center;
+}
+
+.si-no:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+.linea-ext-gris {
+    border: 3px dashed rgb(190, 190, 190);
+    padding: 15px;
+}
+
+.linea-ext-verde {
+    border: 3px dashed rgba(15, 197, 24);
+    padding: 15px;
+}

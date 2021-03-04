@@ -1,0 +1,14 @@
+<angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent">
+</angular-editor>
+
+<div class="row ">
+    <div class="col-12 ">
+        <button type="button " class="btn btn-secondary btn-block waves-effect waves-light m-r-10 mb-2 mt-2" (click)="transformarHtml() ">
+            <div>
+                <i class="fa fa-save " ></i>
+                &nbsp;Transformar
+            </div>
+        </button>
+    </div>
+</div>
+<div *ngIf="htmlContentTransf" class="alert alert-success">Contenido html</div>

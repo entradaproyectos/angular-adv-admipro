@@ -1,0 +1,213 @@
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text" class="form-control" placeholder="Buscar newsletter ...">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <p><i class="fa fa-spin fa-refresh fa-2x"></i></p>
+            <p class="mb-0">Por favor, espere ...</p>
+        </div>
+    </div>
+</div> -->
+
+<div class="row" *ngIf="!crear">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body" style="background-color: #b9b9b7; display: flex; justify-content:space-around;">
+                <h4 class="card-title">Crear Newsletter</h4>
+                <button (click)="Crear()" class="btn btn-rounded btn-success">Crear Newsletter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="crear">
+
+    <div class="col-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Crear Newsletter</h4>
+                <!-- <h6 class="card-subtitle">Título</h6> -->
+                <form class="form p-t-20" [formGroup]="newsForm" (submit)="crearNews()">
+
+                    <div class="linea-ext">
+
+                        <div class="form-group">
+                            <label for="exampleInputuname">Enlace</label>
+                            <div class="input-group">
+                                <textarea class="form-control" aria-label="With textarea" placeholder="Enlace de la News" formControlName="enlace" rows="3" #enlacef [value]="enlace"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <select class="custom-select" id="inputGroupSelect01" #tipof [value]="tipo">
+                                    <option selected>Tipo</option>
+                                    <option value="REC">REC</option>
+                                    <option value="ACT">ACT</option>
+                                    <option value="POST">POST</option>
+                                    <option value="AG">AG</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="Número" formControlName="numero" #numerof [value]="numero">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <select class="custom-select" id="inputGroupSelect02" #utmCampaingf [value]="utmCampaing">
+                                    <option selected>UTM-CAMPAIGN</option>
+                                    <option value="FIN">FIN</option>
+                                    <option value="INN">INN</option>
+                                    <option value="INT">INT</option>
+                                    <option value="STUP">STUP</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- _____________ inicio PERSONALIZADO ________________________________________________ -->
+                        <!-- ____________________ inicio REC ________________________________________________ -->
+
+                        <div class="row" *ngIf="tipof.value === 'REC'">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Enlace Chat</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enlace chat" formControlName="enlace_chat" #enlace_chat [value]="enlace_chat">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ___ fin REC ________________________________________________ -->
+
+                        <button type="button" (click)="generarNews(enlacef.value,tipof.value,numerof.value,utmCampaingf.value)" class="btn btn-info btn-block waves-effect waves-light m-r-10">
+                            <div *ngIf="!btnGenerarOK">
+                                <i class="fa fa-save"></i>
+                                Generar
+                            </div>
+                            <div *ngIf="btnGenerarOK">
+                                <i class="fa fa-spin fa-refresh"></i>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputuname">Título</label>
+                        <div class="input-group">
+                            <textarea class="form-control" aria-label="With textarea" placeholder="Título de la News" formControlName="titulo" rows="2" [value]="titulo"></textarea>
+                        </div>
+                        <small *ngIf="newsletter" style="margin-top: -15px;">{{titulo_amigable}}</small><br>
+                        <small *ngIf="newsletter" style="margin-top: -15px;">{{titulo_percent}}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Asunto</label>
+                        <div class="input-group">
+                            <textarea class="form-control" aria-label="With textarea" placeholder="Asunto de la News" formControlName="asunto" rows="2" [value]="asunto"></textarea>
+                        </div>
+                        <small style="margin-top: -15px;">{{asunto_percent}}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Preheader</label>
+                        <div class="input-group">
+                            <textarea class="form-control" aria-label="With textarea" placeholder="Preheader de la News" formControlName="preheader" rows="2" [value]="preheader"></textarea>
+                        </div>
+                        <small *ngIf="newsletter" style="margin-top: -15px;">{{preheader_percent}}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Enlace Mini</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enlace mini" formControlName="enlace_bitly" #enlace_bitly [value]="enlace_princ_mini">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Responder a mail:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Responder a mail:" formControlName="responder_mail" #responder_mailf [value]="responder_mail">
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="tipo === 'REC' || tipof.value === 'REC'">
+                        <label for="exampleInputuname">Responder a persona:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Responder a persona:" formControlName="responder_nombre" #responder_nombref [value]="responder_nombre">
+                        </div>
+                    </div>
+
+                    <!-- _____________ fin PERSONALIZADO ________________________________________________ -->
+
+                    <!-- <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Fecha Acto</label>
+                                <div class="row">
+                                    <div class="col-3" style="padding: 0 2px">
+                                        <input type="number" class="form-control" placeholder="dia" formControlName="acto_dia" [value]="acto_dia">
+                                    </div>
+                                    <div class="col-3" style="padding: 0 2px">
+                                        <input type="number" class="form-control" placeholder="mes" formControlName="acto_mes" [value]="acto_mes">
+                                    </div>
+                                    <div class="col-6" style="padding: 0 10px 0 2px">
+                                        <input type="number" class="form-control" placeholder="año" formControlName="acto_anyo" [value]="acto_anyo">
+                                    </div>
+                                </div>
+                                <input type="number" class="form-control mb-1 mt-1" placeholder="Empieza Hora" formControlName="acto_hora_emp" [value]="acto_hora_empieza">
+                                <input type="number" class="form-control mb-1 mt-1" placeholder="Empieza Minutos" formControlName="acto_min_emp" [value]="acto_min_empieza">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="exampleInputuname">Fecha Envío</label>
+                                <div class="row">
+                                    <div class="col-3" style="padding: 0 2px 10px">
+                                        <input type="number" class="form-control" placeholder="dia" formControlName="envio_dia" [value]="mail_sale_dia">
+                                    </div>
+                                    <div class="col-3" style="padding: 0 2px">
+                                        <input type="number" class="form-control" placeholder="mes" formControlName="envio_mes" [value]="mail_sale_mes">
+                                    </div>
+                                    <div class="col-6" style="padding: 0 2px">
+                                        <input type="number" class="form-control" placeholder="año" formControlName="envio_anyo" [value]="mail_sale_anyo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group" *ngIf="tipo !== 'REC'">
+                        <label for="exampleInputuname">Texto</label>
+                        <div class="input-group">
+                            <textarea class="form-control" aria-label="With textarea" placeholder="Texto de la News" formControlName="texto" rows="8"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-block waves-effect waves-light m-r-10" [disabled]="newsForm.invalid">
+                        <i class="fa fa-save"></i>
+                        Guardar cambios
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-7 ">
+        <div class="card ">
+            <div class="card-body ">
+                <h4 class="card-title ">Vista previa</h4>
+                <!-- <app-rec *ngIf="newsletter " (html)="recogerHtmlString($event) " [newsletter]="newsletter " [guardar]="guardar"></app-rec> -->
+                <app-rec *ngIf="newsletter " [newsletter]="newsletter " [guardar]="guardar" (html)="recogerHtmlString($event)"></app-rec>
+                <!-- <app-rec *ngIf="newsletter "></app-rec> -->
+            </div>
+        </div>
+    </div>
+</div>

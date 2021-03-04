@@ -1,1 +1,52 @@
-<p>dashboard works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title"><strong>DashBoard Control</strong></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title"><strong>Envíos</strong></h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Nombre</th>
+                            <th>Fecha Envío</th>
+                            <th>Estado</th>
+                            <th>Fecha Primera Gravación</th>
+                            <th>Días para Segunda Gravación</th>
+                            <th>Envíos Hechos</th>
+                            <th class="text-nowrap">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of envios">
+                            <td>{{item.nom_enviament}}</td>
+                            <td>{{item.data_enviament | date:'short'}}</td>
+                            <td>
+                                <div class="progress progress-xs margin-vertical-10 ">
+                                    <div class="progress-bar bg-danger" style="width: 35% ;height:6px;"></div>
+                                </div>
+                            </td>
+                            <td>{{item.data_primeres_dades | date:'short'}}</td>
+                            <td>{{item.data_10dies}}</td>
+                            <td>{{item.enviaments_fets}}</td>
+
+                            <td class="text-nowrap">
+                                <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+<input type="file" (change)="fileChangeEvent($event)" />
+
+<image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="600 / 258" format="jpeg" (imageCropped)="imageCropped($event)" resizeToWidth="600" resizeToHeight="258"></image-cropper>

@@ -1,0 +1,131 @@
+<div class="properes" style="width:100%;max-width:300px;display:inline-block;vertical-align:top">
+    <table style="border-spacing:0;font-family: Arial, Helvetica, sans-serif;color:#333;text-align:center;width:100%;max-width:300px;display:inline-block;vertical-align:top" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td style="padding-top:0;padding:0 10px;text-align:center;mso-table-lspace: 0pt !important;mso-table-rspace: 0pt !important;display: block !important;">
+                    <table style="border-width:1px;border-style:solid;border-color:#ddd;background-color:#ffffff;border-spacing:0;font-family: Arial, sans-serif;color:#333;width:100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td style="font-size:5px;padding:0" height="10">&nbsp;</td>
+                            </tr>
+                            <tr *ngIf="!editando && tipo === 'proper'">
+                                <td class="titol" style="padding: 0px; text-align: center; font-size: 14px; color: #000000;">
+                                    {{item.especialidad}}
+                                </td>
+                            </tr>
+                            <tr *ngIf="!editando && tipo === 'sacaba'">
+                                <td class="titol" style="padding: 0px; text-align: center; font-size: 14px; color: #000000;">
+                                    {{item.especialidad}}
+                                </td>
+                            </tr>
+                            <tr *ngIf="editando">
+                                <td class="titol" style="padding: 0px; text-align: center; font-size: 14px; color: #000000;">
+                                    <textarea rows="2" type="text" [value]="item.especialidad" [(ngModel)]=item.especialidad style="width:90%"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:5px;padding:0" height="5">&nbsp;</td>
+                            </tr>
+                            <tr *ngIf="!editando">
+                                <td style="padding:0;">
+                                    <table style="border-spacing:0;font-family:Arial;color:#333" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0;" width="14"></td>
+                                                <td style="padding:0;font-weight:700;text-align:center;font-size:14px;color:#000" width="250" valign="top" height="50">
+                                                    <a href="{{item.link}}?utm_source=AG&amp;utm_medium={{newsletter.numero}}-Properes_{{index}}&amp;utm_campaign=enviament-agenda" style="text-decoration: none; font-weight: normal; font-size: 14px; color: rgb(192, 0, 0);" target="_blank" title="">
+                                                        <span class="titolh3">
+                                                            <strong>{{item.titulo}}</strong>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                                <td style="padding:0;" width="14"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr *ngIf="editando">
+                                <td style="padding:0;">
+                                    <table style="border-spacing:0;font-family: Arial, sans-serif;color:#333" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0;">
+                                                    <table style="border-spacing:0;font-family:  Arial, sans-serif;color:#333" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding:0;" width="14"></td>
+                                                                <td style="padding:0;text-align:center;font-size:14px;color:#000" width="250" valign="top" height="50">
+                                                                    <textarea rows="4" type="text" [value]="item.titulo" [(ngModel)]=item.titulo style="width:90%"></textarea>
+                                                                </td>
+                                                                <td style="padding:0;" width="14"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:5px;padding:0" height="10">&nbsp;</td>
+                            </tr>
+                            <tr *ngIf="!editando">
+                                <td style="padding:0;text-align:center;font-size:14px;color:#333333">
+                                    <img src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/assets/Agenda/calendar-grey-18.png" style="border-width:0;height:16px"> &nbsp;
+                                    <span class="data">
+                                        {{item.fecha}}
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="editando">
+                                <td style="padding:0;text-align:center;font-size:14px;color:#333333">
+                                    <textarea rows="2" type="text" [value]="item.fecha" style="width:90%" [(ngModel)]=item.fecha></textarea>
+                                </td>
+                            </tr>
+                            <tr *ngIf="!editando">
+                                <td style="padding:0;text-align:center;font-size:14px">
+                                    <img alt="" src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/assets/Agenda/map-grey-18.png" style="border-width:0;height:16"> &nbsp; En línia
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0;" height="10"></td>
+                            </tr>
+                            <tr *ngIf="editando">
+                                <td style="padding:0;text-align:center;font-size:14px">
+                                    <textarea rows="4" type="text" [value]="item.link" [(ngModel)]=item.link style="width:90%"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0;" width="278" height="20"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:0;" height="5"></td>
+            </tr>
+            <tr *ngIf="!editando">
+                <td style="font-size:5px;padding:0" height="10">
+                    <button (click)="editar()" *ngIf="!editando" type="button" class="btn waves-effect waves-light btn-outline-secondary btn-block" style="width: 80%;">Editar</button>
+                </td>
+            </tr>
+            <tr *ngIf="editando">
+                <td style="font-size:5px;padding:0" height="10">
+                    <a [href]="item.link" target="_blank">
+                        <button type="button" class="btn waves-effect waves-light btn-outline-secondary mr-2" style="width: 30%;">
+                            <i class="fa fa-link"></i>
+                        </button>
+                    </a>
+                    <button (click)="guardar()" type="button" class="btn waves-effect waves-light btn-outline-success" style="width: 60%;">Guardar</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding:0;" height="20"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

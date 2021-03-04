@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Recortar Imagen</h4>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-subtitle ">Elegir Newsletter</h6>
+
+                <div class="btn-group bootstrap-select show">
+
+                    <select class="selectpicker w-100 p-2" data-style="form-control btn-secondary" tabindex="-98" [(ngModel)]="newsletter" (change)=elegirNewsletter()>
+                        <optgroup label="NO SERIATS">
+                            <option value="cv">Convocatoria</option>
+                            <option value="post">Post</option>
+                        </optgroup>
+                        <optgroup label="AGENDA">
+                            <option value="agenda_dest">Agenda Destacat</option>
+                            <option value="agenda_prin">Agenda Principal</option>
+                        </optgroup>
+                        <optgroup label="ACCIO INFORMA">
+                            <option value="ai_dest">Acció Informa Destacat</option>
+                            <option value="ai_prin">Acció Informa Principal</option>
+                        </optgroup>
+                        <optgroup label="RADAR">
+                            <option value="radar">Radar</option>
+                        </optgroup>
+                        <optgroup label="ESPECIALS">
+                            <option value="especials">Possar tamany</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-subtitle ">Elegir tipo de imagen de newsletter</h6>
+                <div class="row" *ngIf="newsletter !== 'especials'">
+                    <div class="col-6 text-center">
+                        <label for="">Newsletter</label>
+                        <p style="color: black;">{{newsletter}}</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <label for="">Tamaño</label>
+                        <p style="color: black;">{{widthImagen}} / {{heightImagen}}</p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="newsletter === 'especials'">
+                    <div class="col-6 text-center">
+                        <label for="">Width</label>
+                        <input (keyup)="cambiarEspecials()" type="number" class="form-control form-control-line text-center" [(ngModel)]="widthImagen">
+                    </div>
+                    <div class="col-6 text-center">
+                        <label for="">Height</label>
+                        <input (keyup)="cambiarEspecials()" type="number" class="form-control form-control-line text-center" [(ngModel)]="heightImagen">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-subtitle ">Seleccionar Imagen</h6>
+
+                <!-- <app-cropimage-todos [resizeToWidth]="widthImagen" [resizeToHeight]="heightImagen" [aspectRatio]="aspectRatio" (imagenCortada)="recibirImagen($event) "></app-cropimage-todos> -->
+
+                <app-cropimage180 *ngIf="aspectRatio === 1" [resizeToWidth]="widthImagen" [resizeToHeight]="heightImagen" [aspectRatio]="aspectRatio" (imagenCortada)="recibirImagen($event) "></app-cropimage180>
+
+                <app-cropimage270x154 *ngIf="aspectRatio === 1.7532467532467533" [resizeToWidth]="widthImagen" [resizeToHeight]="heightImagen" [aspectRatio]="aspectRatio" (imagenCortada)="recibirImagen($event) "></app-cropimage270x154>
+
+                <app-cropimage278x128 *ngIf="aspectRatio === 278/128" [resizeToWidth]="widthImagen" [resizeToHeight]="heightImagen" [aspectRatio]="aspectRatio" (imagenCortada)="recibirImagen($event) "></app-cropimage278x128>
+
+                <app-cropimage600x117 *ngIf="aspectRatio === 600/117" [resizeToWidth]="widthImagen" [resizeToHeight]="heightImagen" [aspectRatio]="aspectRatio" (imagenCortada)="recibirImagen($event) "></app-cropimage600x117>
+
+                <app-cropimage600x258 *ngIf="aspectRatio === 600/258" [resizeToWidth]="widthImagen" [resizeToHeight]="heightImagen" [aspectRatio]="aspectRatio" (imagenCortada)="recibirImagen($event) "></app-cropimage600x258>
+
+                <app-cropimage600x300 *ngIf="aspectRatio === 2" [resizeToWidth]="widthImagen" [resizeToHeight]="heightImagen" [aspectRatio]="aspectRatio" (imagenCortada)="recibirImagen($event) "></app-cropimage600x300>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-subtitle ">Vista Previa</h6>
+                <div class="linea-ext" style="text-align: center; background-color: #ccc;">
+                    <img [src]="imagenCropped" style="width: 100%;" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,134 @@
+<div class="properes" style="width:100%;max-width:300px;display:inline-block;vertical-align:top">
+    <table style="border-spacing:0;font-family: Arial, Helvetica, sans-serif;color:#333;text-align:center;width:100%;max-width:300px;display:inline-block;vertical-align:top" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td style="padding-top:0;padding:0 10px;text-align:center;mso-table-lspace: 0pt !important;mso-table-rspace: 0pt !important;display: block !important;">
+                    <table style="border-width:1px;border-style:solid;border-color:#ddd;background-color:#ffffff;border-spacing:0;font-family: Arial, sans-serif;color:#333;width:100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr *ngIf="editando">
+                                <td style="padding:0;text-align:center;mso-table-lspace: 0pt !important;display: block !important;mso-table-rspace: 0pt !important;">
+                                    <a data-utm-medium="img" href="{{destacat.link}}?utm_source=AG&amp;utm_medium={{agenda.numero}}-destacat_{{num_dest}}_img&amp;utm_campaign=enviament-agenda" style="font-weight:700;text-decoration:none;font-size:12px;color:#000;mso-table-rspace: 0pt !important;"
+                                        target="_blank" title="" data-utm="acte_02_img">
+                                        <!-- <img alt="" src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/img/agenda/{{agenda.numero}}-destacat{{num_dest}}.jpg" style="border-width:0;height:auto;width:100%; margin:0; padding:0;mso-table-rspace: 0pt !important;"> -->
+                                        <img alt="" [src]="imagenCropped" style="border-width:0;height:auto;width:100%; margin:0; padding:0;mso-table-rspace: 0pt !important;">
+                                    </a>
+                                    <app-cropimage278x128 [resizeToWidth]="widthImagen" [resizeToHeight]="heightImagen" [aspectRatio]="aspectRatio" (imagenCortada)="recibirImagen($event)"></app-cropimage278x128>
+                                </td>
+                            </tr>
+
+                            <tr *ngIf="!editando">
+                                <td style="padding:0;text-align:center;mso-table-lspace: 0pt !important;display: block !important;mso-table-rspace: 0pt !important;">
+                                    <a data-utm-medium="img" href="{{destacat.link}}?utm_source=AG&amp;utm_medium={{agenda.numero}}-destacat_{{num_dest}}_img&amp;utm_campaign=enviament-agenda" style="font-weight:700;text-decoration:none;font-size:12px;color:#000;mso-table-rspace: 0pt !important;"
+                                        target="_blank" title="">
+                                        <!-- <img alt="" src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/img/agenda/{{agenda.numero}}-destacat{{num_dest}}.jpg" style="border-width:0;height:auto;width:100%; margin:0; padding:0;mso-table-rspace: 0pt !important;"> -->
+                                        <img alt="" [src]="imagenCropped" style="border-width:0;height:auto;width:100%; margin:0; padding:0;mso-table-rspace: 0pt !important;">
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="font-size:5px;padding:0" height="10">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:5px;padding:0" height="5">&nbsp;</td>
+                            </tr>
+                            <tr *ngIf="!editando">
+                                <td style="padding:0;">
+                                    <table style="border-spacing:0;font-family: Arial, sans-serif;color:#333" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0;">
+                                                    <table style="border-spacing:0;font-family:  Arial, sans-serif;color:#333" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding:0;" width="14"></td>
+                                                                <td style="padding:0;text-align:center;font-size:14px;color:#000" width="250" valign="top" height="50">
+                                                                    <a data-utm="acte_02_title" href="{{destacat.link}}?utm_source=AG&amp;utm_medium={{agenda.numero}}-destacat_{{num_dest}}_titol&amp;utm_campaign=enviament-agenda" style="text-decoration: none; font-weight: normal; font-size: 14px; color: rgb(192, 0, 0);"
+                                                                        target="_blank" title="">
+                                                                        <span class="titolh3">
+                                                                            <strong>{{destacat.titulo}}</strong>
+                                                                        </span>
+                                                                    </a>
+                                                                </td>
+                                                                <td style="padding:0;" width="14"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr *ngIf="editando">
+                                <td style="padding:0;">
+                                    <table style="border-spacing:0;font-family: Arial, sans-serif;color:#333" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0;">
+                                                    <table style="border-spacing:0;font-family:  Arial, sans-serif;color:#333" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding:0;" width="14"></td>
+                                                                <td style="padding:0;text-align:center;font-size:14px;color:#000" width="250" valign="top" height="50">
+                                                                    <textarea rows="4" type="text" [value]="destacat.titulo" style="width:90%"></textarea>
+                                                                </td>
+                                                                <td style="padding:0;" width="14"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:5px;padding:0" height="10">&nbsp;</td>
+                            </tr>
+                            <tr *ngIf="!editando">
+                                <td style="padding:0;text-align:center;font-size:14px;color:#333333">
+                                    <img src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/assets/Agenda/calendar-grey-18.png" style="border-width:0;height:16px"> &nbsp;
+                                    <span class="data">
+                                        {{destacat.fecha}}
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="editando">
+                                <td style="padding:0;text-align:center;font-size:14px;color:#333333">
+                                    <textarea rows="2" type="text" [value]="destacat.fecha" style="width:90%"></textarea>
+                                </td>
+                            </tr>
+                            <tr *ngIf="!editando">
+                                <td style="padding:0;text-align:center;font-size:14px">
+                                    <img alt="" src="http://enviaments.accio.gencat.cat/ACC1O/cat/docs/enviaments/assets/Agenda/map-grey-18.png" style="border-width:0;height:16"> &nbsp; En línia
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0;" height="10"></td>
+                            </tr>
+                            <tr *ngIf="editando">
+                                <td style="padding:0;text-align:center;font-size:14px">
+                                    <textarea rows="4" type="text" [value]="destacat.link" style="width:90%"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0;" width="278" height="20"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:0;" height="20"></td>
+            </tr>
+            <tr>
+                <td style="font-size:5px;padding:0" height="10">
+                    <button (click)="editar()" *ngIf="!editando" type="button" class="btn waves-effect waves-light btn-outline-secondary btn-block" style="width: 80%;">Editar</button>
+                    <button (click)="guardar()" *ngIf="editando" type="button" class="btn waves-effect waves-light btn-outline-success btn-block" style="width: 80%;">Guardar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

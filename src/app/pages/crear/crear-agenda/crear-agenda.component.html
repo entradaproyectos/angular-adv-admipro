@@ -1,0 +1,96 @@
+<!-- <div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <p><i class="fa fa-spin fa-refresh fa-2x"></i></p>
+            <p class="mb-0">Por favor, espere ...</p>
+        </div>
+    </div>
+</div> -->
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Datos</h4>
+        <div class="linea-ext" style="padding-bottom: 0px;">
+            <div class="form-group" style="margin-bottom: 5px;">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="exampleInputuname">Número</label>
+                        <div class="input-group">
+                            <input type="number" placeholder="Número" style="width: 100%;" [(ngModel)]="numero">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button *ngIf="!texto_oculto" (click)="texto_oculto = !texto_oculto" type="button" class="btn waves-effect waves-light btn-outline-secondary">Ocultar Texto</button>
+<button *ngIf="texto_oculto" (click)="texto_oculto = !texto_oculto" type="button" class="btn waves-effect waves-light btn-outline-success">Mostrar Texto</button>
+
+<!-- <div class="card" *ngIf="!texto_oculto">
+    <div class="card-body">
+        <h4 class="card-title">Texto</h4>
+        <p>{{texto}}</p>
+    </div>
+</div> -->
+
+<div class="card" *ngIf="!texto_oculto">
+    <div class="card-body">
+        <h4 class="card-title">Pegar Agenda Texto</h4>
+        <app-text-editor-agenda (emitTexto)="recibirTexto($event)"></app-text-editor-agenda>
+        <br>
+        <!-- <div *ngIf="agenda">
+            <h4 class="card-title">Destacats</h4><br>
+            <div class="row">
+                <div class="col-6">
+                    <p>{{agenda.destacats.destacat1.fecha}}</p>
+                    <p>{{agenda.destacats.destacat1.titulo}}</p>
+                    <p>{{agenda.destacats.destacat1.especialidad}}</p>
+                    <p>{{agenda.destacats.destacat1.link}}</p>
+                    <p>{{agenda.destacats.destacat1.imagen}}</p>
+                </div>
+                <div class="col-6">
+                    <p>{{agenda.destacats.destacat2.fecha}}</p>
+                    <p>{{agenda.destacats.destacat2.titulo}}</p>
+                    <p>{{agenda.destacats.destacat2.especialidad}}</p>
+                    <p>{{agenda.destacats.destacat2.link}}</p>
+                    <p>{{agenda.destacats.destacat2.imagen}}</p>
+                </div>
+            </div>
+
+            <br>
+            <h4 class="card-title">Propers Seminaris - Número &nbsp;&nbsp;&nbsp;{{agenda.propersSeminaris.length}}</h4>
+            <br>
+            <div class="row" *ngFor="let item of agenda.propersSeminaris">
+                <p>{{item.titulo}}</p>
+            </div>
+
+            <br>
+            <h4 class="card-title">S’acaba el termini per inscriure’t - Número &nbsp;&nbsp;&nbsp;{{agenda.sacaba.length}}</h4>
+            <br>
+            <div class="row" *ngFor="let item of agenda.sacaba">
+                <p>{{item.titulo}}</p>
+            </div>
+
+            <br>
+            <h4 class="card-title">Ja s'han obert les inscripcions - Número &nbsp;&nbsp;&nbsp;{{agenda.obert.length}}</h4>
+            <br>
+            <div class="row" *ngFor="let item of agenda.obert">
+                <p>{{item.titulo}}</p>
+            </div>
+
+        </div> -->
+    </div>
+</div>
+
+<div class="card" *ngIf="agenda">
+    <div class="card-body">
+        <h4 class="card-title">Vista Previa</h4>
+        <app-shared-agenda [newsletter]="agenda " (newsletter_retoc)="recogerAgendaRetoc($event) " (html)="recogerHtmlString($event) "></app-shared-agenda>
+
+        <!-- [imagenCropped]="imagenCropped "  -->
+        <!-- [lista_preview]="lista_preview " -->
+    </div>
+</div>

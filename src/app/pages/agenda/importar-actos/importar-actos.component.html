@@ -1,0 +1,52 @@
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <p><i class="fa fa-spin fa-refresh fa-2x"></i></p>
+            <p class="mb-0">Por favor, espere ...</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body" style="background-color: #b9b9b7; display: flex; justify-content:space-around;">
+                <h4 class="card-title">Importar Actos de Url Agenda</h4>
+                <button (click)="importar()" class="btn btn-rounded btn-success">Importar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+< <div class="row animated fadeIn fast" *ngIf="actos.length !== 0">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Total de Actos {{actos_def.length}}</h4>
+                <h6 class="card-subtitle">Actos desde hoy</h6>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Enlace</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let acto of actos_def">
+
+                                <td>{{acto['fecha']}}</td>
+                                <td>{{acto['enlace']}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>

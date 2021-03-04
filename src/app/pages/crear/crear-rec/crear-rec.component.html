@@ -1,0 +1,250 @@
+<!-- <div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <p><i class="fa fa-spin fa-refresh fa-2x"></i></p>
+            <p class="mb-0">Por favor, espere ...</p>
+        </div>
+    </div>
+</div> -->
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Crear Newsletter</h4>
+        <div class="row">
+            <!-- <h6 class="card-subtitle">Título</h6> -->
+            <div class="linea-ext" style="padding-bottom: 0px;">
+                <div class="form-group" style="margin-bottom: 5px;">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- <label for="exampleInputuname">Enlace</label> -->
+                            <div class="input-group mb-2" style="width: 100%;" *ngIf="acto">
+                                <textarea aria-label="With textarea" placeholder="Enlace de la News" rows="2" style="width: 100%;" [value]="acto.enlace"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="form-group" *ngIf="acto">
+                                <label for="exampleInputuname">Enlace Chat</label>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Enlace chat" style="width: 100%;" [(ngModel)]="enlace_chat">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div class="form-group" *ngIf="acto">
+                                <label for="exampleInputuname">Número</label>
+                                <input type="number" placeholder="Número" style="width: 100%;" [(ngModel)]="numero">
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group" *ngIf="acto">
+                                <label for="exampleInputuname">Utm Campaing</label>
+                                <select class="custom-select" id="inputGroupSelect02" style="width: 100%;" [(ngModel)]="utmCampaing">
+                                    <option selected>UTM-CAMPAIGN</option>
+                                    <option value="ES-FIN">ES-FIN</option>
+                                    <option value="FIN">FIN</option>
+                                    <option value="ES-INN">ES-INN</option>
+                                    <option value="INN">INN</option>
+                                    <option value="INT">INT</option>
+                                    <option value="cluster">cluster</option>
+                                    <option value="STUP">STUP</option>
+                                    <option value="missio">missio</option>
+                                    <option value="invest">invest</option>
+                                    <option value="dgi">dgi</option>
+                                    <option value="setmana-2020">setmana-2020</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" style="margin-top: 33px;margin-bottom: 0px;" class="btn btn-info btn-block waves-effect waves-light m-r-10" (click)="generarNews()">
+                                <div *ngIf="!cargando">
+                                    <i class="fa fa-save"></i>
+                                    Generar
+                                </div>
+                                <div *ngIf="cargando">
+                                    <i class="fa fa-spin fa-refresh"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row" *ngIf="newsRec">
+    <div class="col-4 ">
+        <div class="card ">
+            <div class="card-body ">
+                <h4 class="card-title ">Datos</h4>
+                <div class="row">
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Enlace</strong></small>
+                        <br>
+                        <small>{{acto.enlace}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Filename HTML</strong></small>
+                        <br>
+                        <small>{{newsRec.filename_html}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Enlace recomana</strong></small>
+                        <br>
+                        <small>{{newsRec.enlace_recomana_xxss_mini_sin_http}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Enlace Chat</strong></small>
+                        <br>
+                        <small>{{newsRec.enlace_chat}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Título</strong></small>
+                        <br>
+                        <small>{{newsRec.titulo}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Título amigable Corto</strong></small>
+                        <br>
+                        <small>{{newsRec.titulo_amigable_short}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Título %</strong></small>
+                        <br>
+                        <small>{{newsRec.titulo_percent}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Asunto</strong></small>
+                        <br>
+                        <small>{{newsRec.asunto}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Asunto %</strong></small>
+                        <br>
+                        <small>{{newsRec.asunto_percent}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Fecha Acto Texto</strong></small>
+                        <br>
+                        <small>{{newsRec.fecha_acto_texto}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Fecha Acto día</strong></small>
+                        <br>
+                        <small>{{newsRec.fecha_acto_texto_dia_semana}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Hora acto texto</strong></small>
+                        <br>
+                        <small>{{newsRec.hora_acto_texto}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Fecha sale Mail</strong></small>
+                        <br>
+                        <small>{{newsRec.fecha_sale_mail}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Número</strong></small>
+                        <br>
+                        <small>{{newsRec.numero}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Utm Campaing</strong></small>
+                        <br>
+                        <small>{{newsRec.utmCampaing}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Preheader</strong></small>
+                        <br>
+                        <small>{{newsRec.preheader}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Preheader %</strong></small>
+                        <br>
+                        <small>{{newsRec.preheader_percent}}</small>
+                    </div>
+
+                    <div class="col-12 linea-ext-xs mb-1">
+                        <small><strong>Responder Mail</strong></small>
+                        <br>
+                        <small>{{newsRec.responder_mail}}</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div class="card ">
+            <div class="card-body ">
+                <h4 class="card-title ">Vista previa</h4>
+                <app-rec *ngIf="newsRec " (html)="recogerHtmlString($event) " [newsletter]="newsRec "></app-rec>
+            </div>
+        </div>
+        <div class="card ">
+            <div class="card-body ">
+                <h4 class="card-title ">Descargar Archivos</h4>
+                <div class="row">
+                    <div class="col-4">
+                        <a *ngIf="urlTxt" [href]="urlTxt" target="_blank" [download]="txtName" rel="noopener noreferrer">
+                            <button type="button" class="btn btn-primary btn-block btn-rounded waves-effect waves-light">
+                                <i class="fa fa-cloud-download"></i>
+                                Descargar TXT
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a *ngIf="urlHtml" [href]="urlHtml" target="_blank" [download]="htmlName" rel="noopener noreferrer">
+                            <button type="button" class="btn btn-info btn-block btn-rounded waves-effect waves-light">
+                                <i class="fa fa-cloud-download"></i>
+                                Descargar HTML
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-4 ">
+                        <a *ngIf="urlHtmlText " [href]="urlHtmlText " target="_blank " [download]="htmlTextName " rel="noopener noreferrer ">
+                            <button type="button " class="btn btn-secondary btn-block btn-rounded waves-effect waves-light ">
+                                    <i class="fa fa-cloud-download "></i> Descargar HTML-TEXT
+                                </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="newsRec.html">
+            <div class="col-12 ">
+                <button (click)="guardarRec()" type="button" class="btn btn-success btn-block waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                    Guardar cambios
+                </button>
+            </div>
+        </div>
+    </div>

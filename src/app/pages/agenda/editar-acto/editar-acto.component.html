@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <label *ngIf="!acto.enlace">Enlace</label>
+                <a *ngIf="acto.enlace" [href]="acto.enlace" target="_blank">
+                    <button class="btn btn-rounded btn-outline-primary mb-2">Enlace</button>
+                </a>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group ">
+                            <textarea id="enlace_in" name="enlace" ngDefaultControl [(ngModel)]="acto.enlace" (keyup)="trim(acto.enlace) " placeholder="Enlace del Acto " rows="2" style="width: 100%; "></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label>Título</label>
+                        <textarea name="titulo" ngDefaultControl [(ngModel)]="acto.titulo" (keyup)="acto.titulo.trim() " placeholder="Título del Acto " rows="1" style="width: 100%; "></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label>Especialidad</label>
+                        <textarea name="especialidad" ngDefaultControl [(ngModel)]="acto.especialidad" (keyup)="acto.especialidad.trim() " placeholder="Especialidad" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                    <div class="col-4">
+                        <label>fecha_acto_texto</label>
+                        <textarea name="fecha_acto_texto" ngDefaultControl [(ngModel)]="acto.fecha_acto_texto" (keyup)="acto.fecha_acto_texto.trim() " placeholder="Fecha" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                    <div class="col-4">
+                        <label>hora_acto_texto</label>
+                        <textarea name="hora_acto_texto" ngDefaultControl [(ngModel)]=" acto.hora_acto_texto " (keyup)="acto.hora_acto_texto.trim() " placeholder="Hora" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label>fecha_acto_texto_dia_semana</label>
+                        <textarea name="fecha_acto_texto_dia_semana" ngDefaultControl [(ngModel)]=" acto.fecha_acto_texto_dia_semana " (keyup)="acto.fecha_acto_texto_dia_semana.trim() " placeholder="Dia de la semana" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                    <div class="col-8">
+                        <label>termini_inscr_texto</label>
+                        <textarea name="termini_inscr_texto" ngDefaultControl [(ngModel)]=" acto.termini_inscr_texto " (keyup)="acto.termini_inscr_texto.trim() " placeholder="Termini" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="rowrow mb-4" *ngIf="acto">
+
+    <div class="col-12">
+        <button class="btn btn-block btn-success " (click)="actualizarActo()">Guardar Acto</button>
+    </div>
+
+</div>

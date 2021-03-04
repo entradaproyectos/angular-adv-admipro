@@ -1,0 +1,143 @@
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <p><i class="fa fa-spin fa-refresh fa-2x"></i></p>
+            <p class="mb-0">Por favor, espere ...</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <label>Enlace</label>
+                <div class="row">
+
+                    <div class="col-9">
+                        <div class="input-group ">
+                            <textarea id="enlace" [(ngModel)]=" enlace " (keyup)="trim(enlace) " placeholder="Enlace del Acto " rows="3 " style="width: 100%; "></textarea>
+                        </div>
+                        <small class="text-danger " *ngIf=" error_enlace " [(ngModel)]="error_enlace "><strong>{{error_enlace}}</strong></small>
+                        <small class="text-success " *ngIf=" ok_enlace " [(ngModel)]="ok_enlace "><strong>{{ok_enlace}}</strong></small>
+                    </div>
+
+                    <div class="col-3 ">
+                        <button (click)="recibirDatos()" class="btn btn-block btn-info " style="height:75px; ">Recibe Datos</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="error_enlace">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <label *ngIf="!enlace">Enlace</label>
+                <a *ngIf="enlace" [href]="enlace" target="_blank">
+                    <button class="btn btn-rounded btn-outline-primary mb-2">Enlace</button>
+                </a>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="input-group ">
+                            <textarea id="enlace_in" name="enlace" ngDefaultControl [(ngModel)]="enlace" (keyup)="trim(enlace) " placeholder="Enlace del Acto " rows="2" style="width: 100%; "></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label>Título</label>
+                        <textarea name="titulo" ngDefaultControl [(ngModel)]="titulo" (keyup)="titulo.trim() " placeholder="Título del Acto " rows="1" style="width: 100%; "></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label>Especialidad</label>
+                        <textarea name="especialidad" ngDefaultControl [(ngModel)]="especialidad" (keyup)="especialidad.trim() " placeholder="Especialidad" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                    <div class="col-4">
+                        <label>fecha_acto_texto</label>
+                        <textarea name="fecha_acto_texto" ngDefaultControl [(ngModel)]="fecha_acto_texto" (keyup)="fecha_acto_texto.trim() " placeholder="Fecha" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                    <div class="col-4">
+                        <label>hora_acto_texto</label>
+                        <textarea name="hora_acto_texto" ngDefaultControl [(ngModel)]=" hora_acto_texto " (keyup)="hora_acto_texto.trim() " placeholder="Hora" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <label>fecha_acto_texto_dia_semana</label>
+                        <textarea name="fecha_acto_texto_dia_semana" ngDefaultControl [(ngModel)]=" fecha_acto_texto_dia_semana " (keyup)="fecha_acto_texto_dia_semana.trim() " placeholder="Dia de la semana" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                    <div class="col-8">
+                        <label>termini_inscr_texto</label>
+                        <textarea name="termini_inscr_texto" ngDefaultControl [(ngModel)]=" termini_inscr_texto " (keyup)="termini_inscr_texto.trim() " placeholder="Termini" rows="1" style="width: 100%; "></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <button (click)="guardarActo()" class="btn btn-block btn-info ">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="actoModel">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <label><strong>enlace</strong></label>
+                <p>{{actoModel.enlace}}</p>
+                <label><strong>especialidad</strong></label>
+                <p>{{actoModel.especialidad}}</p>
+                <label><strong>fecha_acto_texto_dia_semana</strong></label>
+                <p>{{actoModel.fecha_acto_texto_dia_semana}}</p>
+                <label><strong>fecha_acto_anyo</strong></label>
+                <p>{{actoModel.fecha_acto_anyo}}</p>
+                <label><strong>fecha_acto_num</strong></label>
+                <p>{{actoModel.fecha_acto_num}}</p>
+                <label><strong>fecha_acto_texto</strong></label>
+                <p>{{actoModel.fecha_acto_texto}}</p>
+                <label><strong>hora_acto_texto</strong></label>
+                <p>{{actoModel.hora_acto_texto}}</p>
+                <label><strong>termini_inscr</strong></label>
+                <p>{{actoModel.termini_inscr}}</p>
+                <label><strong>termini_inscr_num</strong></label>
+                <p>{{actoModel.termini_inscr_num}}</p>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <label><strong>termini_inscr_texto</strong></label>
+                <p>{{actoModel.termini_inscr_texto}}</p>
+                <label><strong>titulo</strong></label>
+                <p>{{actoModel.titulo}}</p>
+                <label><strong>titulo_amigable</strong></label>
+                <p>{{actoModel.titulo_amigable}}</p>
+                <label><strong>titulo_amigable_short</strong></label>
+                <p>{{actoModel.titulo_amigable_short}}</p>
+                <label><strong>titulo_percent</strong></label>
+                <p>{{actoModel.titulo_percent}}</p>
+                <label><strong>varies_dates</strong></label>
+                <p>{{actoModel.varies_dates}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="rowrow mb-4" *ngIf="actoModel">
+
+    <div class="col-12">
+        <button class="btn btn-block btn-success " (click)="guardarActo()">Guardar Acto</button>
+    </div>
+
+</div>

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3000/api'
+  baseUrl: 'http://localhost:3000/api',
+  baseUrlPHP: 'http://localhost/gestion_mails_accio/backend/ajax'
 };
 
 /*
